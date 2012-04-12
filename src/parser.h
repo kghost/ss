@@ -1,7 +1,7 @@
 /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
 /* vim: set ts=4 sw=4 tw=0: */
 /*
- * main.cc
+ * parser.h
  * Copyright (C) 2012 Zang MingJie <zealot0630@gmail.com>
  * 
  * ss is free software: you can redistribute it and/or modify it
@@ -18,14 +18,15 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <iostream>
-#include <algorithm>
+#ifndef PARSER_H
+#define PARSER_H
 
-#include "input.h"
-#include "parser.h"
+class Parser {
+	public:
+		Parser() : count(0) {}
+		void operator() (const std::string & x) { std::cout << count << ':' << x << std::endl; ++count; }
+	private:
+		int count;
+};
 
-int main()
-{
-	std::for_each(ReadLineInput(), ReadLineInput::end(), Parser());
-	return 0;
-}
+#endif /* end of include guard: PARSER_H */

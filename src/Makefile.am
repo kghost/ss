@@ -14,6 +14,7 @@ AM_CFLAGS =\
 bin_PROGRAMS = ss
 
 ss_SOURCES = \
+	input.cc \
 	main.cc
 
 ss_LDFLAGS = 

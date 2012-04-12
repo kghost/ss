@@ -1,7 +1,7 @@
 /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
 /* vim: set ts=4 sw=4 tw=0: */
 /*
- * main.cc
+ * prompt.h
  * Copyright (C) 2012 Zang MingJie <zealot0630@gmail.com>
  * 
  * ss is free software: you can redistribute it and/or modify it
@@ -18,14 +18,19 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <iostream>
-#include <algorithm>
+#ifndef PROMPT_H
+#define PROMPT_H
 
-#include "input.h"
-#include "parser.h"
+#include <string>
 
-int main()
-{
-	std::for_each(ReadLineInput(), ReadLineInput::end(), Parser());
-	return 0;
-}
+class Prompt {
+	public:
+		std::string operator()() {
+			char *cwd = get_current_dir_name();
+			std::string s = std::string(cwd) + "$ ";
+			free(cwd);
+			return s;
+		}
+};
+
+#endif /* end of include guard: PROMPT_H */
