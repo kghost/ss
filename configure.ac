@@ -10,9 +10,17 @@ AM_INIT_AUTOMAKE([1.11])
 AM_SILENT_RULES([yes])
 
 AC_PROG_CXX
-
-
-
+AC_CXX_COMPILE_STDCXX_0X
+AC_SUBST(CXX0X_CFLAGS)
+if test "$ax_cv_cxx_compile_cxx0x_native" = yes; then 
+	true 
+elif test "$ax_cv_cxx_compile_cxx0x_gxx" = yes; then 
+	CXXFLAGS="${CXXFLAGS} -std=gnu++0x"
+elif test "$ax_cv_cxx_compile_cxx0x_cxx" = yes; then 
+	CXXFLAGS="${CXXFLAGS} -std=c++0x"
+else 
+	AC_MSG_FAILURE([c++0x support required]) 
+fi 
 
 dnl ***************************************************************************
 dnl Internationalization

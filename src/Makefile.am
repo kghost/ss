@@ -14,6 +14,8 @@ AM_CFLAGS =\
 bin_PROGRAMS = ss
 
 ss_SOURCES = \
+	executor.cc \
+	parser.cc \
 	input.cc \
 	main.cc
 
